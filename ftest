@@ -122,6 +122,7 @@ while (<CONF>) {
     die "wrong configuration file syntax!" unless ( @fields >= 6 or $_ =~ /^insert/ );
 
     $psh = 0; $ack = 0; $rst = 0; $syn = 0; $urg = 0; $fin = 0;
+    $tos = 0;
 
     $psh = 1 if $fields[4] =~ /P/;
     $ack = 1 if $fields[4] =~ /A/;
