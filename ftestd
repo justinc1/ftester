@@ -66,6 +66,7 @@ sub process_pkt {
     my $tcp_obj  = NetPacket::TCP->decode($ip_obj->{'data'});
     my $udp_obj  = NetPacket::UDP->decode($ip_obj->{'data'});
     my $icmp_obj = NetPacket::ICMP->decode($ether_data);
+    my $tos = 0;
 
     if ($fragments) {
 
@@ -140,6 +141,7 @@ sub process_pkt {
                     id      => 1,
                     saddr   => $ip_obj->{dest_ip},
                     daddr   => $ip_obj->{src_ip},
+                    tos     => $tos
                 },
                 tcp => {
                     source  => $tcp_obj->{dest_port},
@@ -170,6 +172,7 @@ sub process_pkt {
                     id      => 2,
                     saddr   => $ip_obj->{dest_ip},
                     daddr   => $ip_obj->{src_ip},
+                    tos     => $tos
                 },
                 tcp => {
                     source  => $tcp_obj->{dest_port},
@@ -200,6 +203,7 @@ sub process_pkt {
                     id      => 2,
                     saddr   => $ip_obj->{dest_ip},
                     daddr   => $ip_obj->{src_ip},
+                    tos     => $tos
                 },
                 tcp => {
                     source  => $tcp_obj->{dest_port},
@@ -223,6 +227,7 @@ sub process_pkt {
                     id      => 2,
                     saddr   => $ip_obj->{dest_ip},
                     daddr   => $ip_obj->{src_ip},
+                    tos     => $tos
                 },
                 tcp => {
                     source  => $tcp_obj->{dest_port},
