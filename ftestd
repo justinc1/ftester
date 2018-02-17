@@ -65,7 +65,7 @@ sub process_pkt {
     my $ip_obj   = NetPacket::IP->decode($ether_data);
     my $tcp_obj  = NetPacket::TCP->decode($ip_obj->{'data'});
     my $udp_obj  = NetPacket::UDP->decode($ip_obj->{'data'});
-    my $icmp_obj = NetPacket::ICMP->decode($ether_data);
+    my $icmp_obj = NetPacket::ICMP->decode($ip_obj->{'data'});
     my $tos = 0;
 
     if ($fragments) {
